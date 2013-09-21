@@ -17,3 +17,4 @@ dist
 .target
 conf/evolutions/
 /db
+*.db
