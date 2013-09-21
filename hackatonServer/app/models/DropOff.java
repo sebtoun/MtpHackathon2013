@@ -1,5 +1,7 @@
 package models;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -16,6 +18,8 @@ public class DropOff extends Model
 	
 	public float latitude ;
 	public float longitude ;
+	
+	public List<Item> dropable;
 	
 	public static Finder<Long, DropOff> find = new Finder<Long, DropOff>(Long.class, DropOff.class);
 	
@@ -55,5 +59,37 @@ public class DropOff extends Model
 	public static void update(DropOff doff)
 	{
 		Ebean.save(doff);
+	}
+
+	public Long getIdOSM() {
+		return idOSM;
+	}
+
+	public void setIdOSM(Long idOSM) {
+		this.idOSM = idOSM;
+	}
+
+	public float getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(float latitude) {
+		this.latitude = latitude;
+	}
+
+	public float getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(float longitude) {
+		this.longitude = longitude;
+	}
+
+	public List<Item> getDropable() {
+		return dropable;
+	}
+
+	public void setDropable(List<Item> dropable) {
+		this.dropable = dropable;
 	}
 }

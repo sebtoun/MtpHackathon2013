@@ -22,7 +22,7 @@ public class Drop extends Model
 	
 	public Photo photo ;
 	
-//	public Content content;
+	public Content content;
 	
 	/**
 	 * Date de drop
@@ -87,6 +87,14 @@ public class Drop extends Model
 		return id;
 	}
 	
+	public Content getContent() {
+		return content;
+	}
+
+	public void setContent(Content content) {
+		this.content = content;
+	}
+
 	/**
 	 * Enregistre en base de données le dropOff passé en paramètre
 	 * @param userAccount

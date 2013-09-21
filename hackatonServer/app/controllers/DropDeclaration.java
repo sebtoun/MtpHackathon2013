@@ -3,9 +3,13 @@ package controllers;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
+import models.Content;
 import models.Drop;
 import models.DropOff;
+import models.Item;
 import models.Photo;
 import models.UserAccount;
 import play.data.DynamicForm;
@@ -46,6 +50,14 @@ public class DropDeclaration extends Controller
 		    //PlaceHolder : ici il faut récupérer l'utilisateur à partir du token
 		    UserAccount user = UserAccount.findById(""+1);
 		    //TODO
+		    //PlaceHolder : ici il faut récupérer la liste d'items que veut jeter l'utilisateur
+		    List<Item> items = new ArrayList<Item>();
+		    //ajouter les items
+		    Content content = new Content();
+		    content.setItems(items);
+		    Content.create(content);
+		    
+		    //TODO
 		    //PlaceHolder : ici il faut avec la latitude longitude soit renvoyer un DropOff existant soit en créer un "non renseigné"
 		    DropOff dropOff = new DropOff();
 		    
@@ -53,6 +65,7 @@ public class DropDeclaration extends Controller
 		    drop.setPhoto(photo);
 		    drop.setUser(user);
 		    drop.setDropOff(dropOff);
+		    drop.setContent(content);
 		    
 		    Drop.create(drop);
 		    return ok();
