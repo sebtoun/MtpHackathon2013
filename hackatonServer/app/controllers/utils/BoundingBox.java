@@ -16,7 +16,7 @@ public class BoundingBox
 		left = longitude - distDegree;
 		bottom = latitude - distDegree ;
 		right = longitude + distDegree ;
-		top = longitude - distDegree ;
+		top = latitude + distDegree ;
 	}
 
 	public float getLeft() {

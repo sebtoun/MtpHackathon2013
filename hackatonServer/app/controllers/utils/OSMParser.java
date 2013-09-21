@@ -7,26 +7,23 @@ import org.w3c.dom.Document;
 import java.io.IOException;
 import org.xml.sax.SAXException;
 import play.libs.F.Function;
+import play.libs.F.Promise;
 import play.libs.WS;
 import play.mvc.*; 
 
-public class ControllerUtils {
+public class OSMParser 
+{
 
-
-	public static String getDropOffs(float left, float bottom, float right, float top){
-
-
+	public static String buildURLBoundingBox(float left, float bottom, float right, float top)
+	{
 		String requestURL = 
-			"http://api.openstreetmap.org/api/0.6/map?"
-			+left.toString()+","
-			+bottom.toString()+","
-			+right.toString()+","
-			+top.toString();
-
-		return xml(requestURL);
-
-		 
-
+				"http://api.openstreetmap.org/api/0.6/map?bbox="
+				+left+","
+				+bottom+","
+				+right+","
+				+top;
+		return requestURL ;
+	}
 
 		// Creating a java DOM XML parser
 		/*DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
@@ -47,7 +44,5 @@ public class ControllerUtils {
 		*/	
 		
 
-	}
+	//}
 }
-
-
