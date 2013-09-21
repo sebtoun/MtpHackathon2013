@@ -10,4 +10,7 @@ public class DropOff extends Model
 {
 	@Id
 	public Long idOSM;
+	
+	public float latitude ;
+	public float longitude ;
 }

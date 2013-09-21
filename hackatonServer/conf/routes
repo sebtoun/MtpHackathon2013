@@ -6,5 +6,9 @@
 GET     /                           controllers.Application.index()
 GET 	/fetchToken/:callback		controllers.Application.fetchToken(callback : String)
 
+# Geoloc
+## returns all the dropoffs in a box (size 2xdistance) around the lat and long 
+GET	/geoloc/dropoffs/:latitude/:longitude/:distance	controllers.Geoloc.getDropoffsBox(latitude: Float, longitude: Float, distance: Long)
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
