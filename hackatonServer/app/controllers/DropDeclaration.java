@@ -4,6 +4,7 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import models.Content;
@@ -66,7 +67,7 @@ public class DropDeclaration extends Controller
 		    drop.setUser(user);
 		    drop.setDropOff(dropOff);
 		    drop.setContent(content);
-		    
+		    drop.setCreationDate(new Date());
 		    Drop.create(drop);
 		    return ok();
 			} catch (MalformedURLException e) {
