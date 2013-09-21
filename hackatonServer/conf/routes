@@ -4,7 +4,7 @@
 
 # Home page
 GET     /                           controllers.Application.index()
-GET 	/signin						controllers.Application.signIn()
+GET 	/fetchToken/:callback		controllers.Application.fetchToken(callback : String)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
