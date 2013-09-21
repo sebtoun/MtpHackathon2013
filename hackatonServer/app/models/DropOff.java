@@ -9,9 +9,5 @@ import play.db.ebean.Model;
 public class DropOff extends Model
 {
 	@Id
-	public Long id;
-	
-	public float latitude;
-	
-	public float longitude;
+	public Long idOSM;
 }
