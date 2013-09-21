@@ -48,4 +48,40 @@ public class Drop extends Model
 	{
 		return find.byId(id);
 	}
+
+	public DropOff getDropOff() {
+		return dropOff;
+	}
+
+	public void setDropOff(DropOff dropOff) {
+		this.dropOff = dropOff;
+	}
+
+	public UserAccount getUser() {
+		return user;
+	}
+
+	public void setUser(UserAccount user) {
+		this.user = user;
+	}
+
+	public Photo getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(Photo photo) {
+		this.photo = photo;
+	}
+
+	public Date getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	public Long getId() {
+		return id;
+	}
 }
