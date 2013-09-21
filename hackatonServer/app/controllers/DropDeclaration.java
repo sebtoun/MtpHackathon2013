@@ -46,6 +46,8 @@ public class DropDeclaration extends Controller
 			Photo.create(photo);
 			
 		    DynamicForm requestData = Form.form().bindFromRequest();
+		    Float latitude = Float.parseFloat(requestData.get("latitude"));
+		    Float longitude = Float.parseFloat(requestData.get("longitude"));
 		    //sessionToken en int, latitude, longitude
 		    //TODO
 		    //PlaceHolder : ici il faut récupérer l'utilisateur à partir du token
@@ -60,6 +62,7 @@ public class DropDeclaration extends Controller
 		    
 		    //TODO
 		    //PlaceHolder : ici il faut avec la latitude longitude soit renvoyer un DropOff existant soit en créer un "non renseigné"
+		    Geoloc.getDropOff(latitude, longitude);
 		    DropOff dropOff = new DropOff();
 		    
 		    Drop drop = new Drop();

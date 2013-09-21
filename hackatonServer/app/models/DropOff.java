@@ -14,6 +14,8 @@ import play.db.ebean.Model.Finder;
 public class DropOff extends Model
 {
 	@Id
+	public Long id;
+	
 	public Long idOSM;
 	
 	public float latitude ;
@@ -61,6 +63,10 @@ public class DropOff extends Model
 		Ebean.save(doff);
 	}
 
+	public Long getId() {
+		return id;
+	}
+	
 	public Long getIdOSM() {
 		return idOSM;
 	}

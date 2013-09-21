@@ -2,6 +2,8 @@ package controllers;
 
 import play.mvc.Controller;
 import play.mvc.Result;
+import models.DropOff;
+
 import org.codehaus.jackson.node.ObjectNode;
 
 import controllers.utils.BoundingBox;
@@ -41,6 +43,18 @@ public class Geoloc extends Controller {
 	    result.put("message", "test ok");
 	    System.out.println("[JSON] " + result);
 		return ok(result);
+	}
+	
+	public static DropOff getDropOff(float latitude, float longitude)
+	{
+		DropOff dropOff = new DropOff();
+		dropOff.setLatitude(latitude);
+		dropOff.setLongitude(longitude);
+		dropOff.setIdOSM(-1l);
+		//TODO
+		//récupérer sur OSM si il y a un point de dépot des déchets tout prêt
+		DropOff.create(dropOff);
+		return dropOff ;
 	}
 
 }
