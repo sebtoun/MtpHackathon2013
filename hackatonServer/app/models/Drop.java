@@ -5,6 +5,8 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import com.avaje.ebean.Ebean;
+
 import play.db.ebean.Model;
 import play.db.ebean.Model.Finder;
 
@@ -83,5 +85,23 @@ public class Drop extends Model
 
 	public Long getId() {
 		return id;
+	}
+	
+	/**
+	 * Enregistre en base de données le dropOff passé en paramètre
+	 * @param userAccount
+	 */
+	public static void create(Drop drop)
+	{
+		Ebean.save(drop);
+	}
+
+	/**
+	 * Met à jour dans la BDD le dropOff passé en paramètre
+	 * @param userAccount
+	 */
+	public static void update(Drop drop)
+	{
+		Ebean.save(drop);
 	}
 }
