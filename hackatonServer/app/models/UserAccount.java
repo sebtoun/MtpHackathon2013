@@ -14,7 +14,7 @@ import play.db.ebean.Model;
 import com.avaje.ebean.Ebean;
 
 @Entity
-public class UserAccount extends Model implements Subject
+public class UserAccount extends Model
 {
 	@Id
 	public Long id;
