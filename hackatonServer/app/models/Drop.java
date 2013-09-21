@@ -20,7 +20,7 @@ public class Drop extends Model
 	
 	public Photo photo ;
 	
-	public Content content;
+//	public Content content;
 	
 	/**
 	 * Date de drop
