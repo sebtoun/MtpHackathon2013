@@ -25,3 +25,9 @@ GET		/createDrop/:latitude/:longitude			controllers.DropDeclaration.showForm(lat
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
+# Like a photo
+POST	/like  						controllers.MarkDrop.like()
+
+# Dislike a photo
+POST	/dislike					controllers.MarkDrop.dislike()

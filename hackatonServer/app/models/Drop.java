@@ -23,6 +23,34 @@ public class Drop extends Model
 	public Photo photo ;
 	
 	public Content content;
+
+	public Long likes;
+
+	public Long dislikes;
+
+	public Long getLikes(){
+		return likes;
+	}
+
+	public Long getDislikes(){
+		return dislikes;
+	}
+
+	public void like(){
+		likes++;
+	}
+
+	public void dislike(){
+		dislikes++;
+	}
+
+	public void setLikes(Long l){
+		this.likes = l;
+	}
+
+	public void setDilikes(Long l){
+		this.dislikes = l;
+	}
 	
 	/**
 	 * Date de drop
