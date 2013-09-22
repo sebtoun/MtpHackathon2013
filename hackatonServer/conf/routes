@@ -21,6 +21,7 @@ GET	/geoloc/dropoffs/:latitude/:longitude/:distance	controllers.Geoloc.getDropof
 # Content Creation
 ## Attend un paramètre picture pour la photo, sessionToken en int, latitude, longitude
 POST	/drops/newDrop		controllers.DropDeclaration.createDrop()
+GET		/drops/:nickname	controllers.Feeds.listUserFeed(nickname : String)
 GET		/createDrop/:latitude/:longitude			controllers.DropDeclaration.showForm(latitude: Float, longitude: Float)
 
 # Map static resources from the /public folder to the /assets URL path

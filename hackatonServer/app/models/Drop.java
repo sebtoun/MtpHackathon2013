@@ -1,6 +1,7 @@
 package models;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -139,5 +140,10 @@ public class Drop extends Model
 	public static void update(Drop drop)
 	{
 		Ebean.save(drop);
+	}
+	
+	public static List<Drop> findByUser(UserAccount user)
+	{
+		return find.where().eq("user", user).findList();
 	}
 }
