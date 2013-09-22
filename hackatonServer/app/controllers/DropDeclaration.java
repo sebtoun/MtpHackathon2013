@@ -156,8 +156,8 @@ public class DropDeclaration extends Controller
 		return badRequest();
 	}
 	
-	public static Result showForm()
+	public static Result showForm(float latitude, float longitude)
 	{
-		return ok(views.html.createDrop.render());
+		return ok(views.html.createDrop.render(latitude, longitude));
 	}
 }
