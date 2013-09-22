@@ -64,40 +64,36 @@ public class OSMParser
 			//json que l'on retourne:
 
 			//Filling the Json with all the close recycling drop offs
+			System.out.println("Caca");
 			NodeList nodeList = (NodeList) xPath.compile(expression).evaluate(xmlDocument, XPathConstants.NODESET);
 			for (int i=0; i<nodeList.getLength(); i++){
-				Node currentItem = nodeList.item(i);
+				Node currentDropOff = nodeList.item(i);
 
 				//retrieve longitude, latitude and dropOffId
-				String dropOffId = currentItem.getAttributes().getNamedItem("id").getNodeValue();
-				String latitude = currentItem.getAttributes().getNamedItem("lat").getNodeValue();
-				String longitude = currentItem.getAttributes().getNamedItem("lon").getNodeValue();
+				String dropOffId = currentDropOff.getAttributes().getNamedItem("id").getNodeValue();
+				String latitude = currentDropOff.getAttributes().getNamedItem("lat").getNodeValue();
+				String longitude = currentDropOff.getAttributes().getNamedItem("lon").getNodeValue();
 				ObjectNode dropOff = Json.newObject();
 				dropOff.put("idOSM", dropOffId);
 				dropOff.put("latitude", latitude);
 				dropOff.put("longitude", longitude);
-				System.out.println(currentItem.hasChildNodes());
+				System.out.println(currentDropOff.hasChildNodes());
 
-				//retrive the different types of recyclables at the dropOff
-				/*
-				NodeList tags = currentItem.getChildNodes();
-				ObjectNode recyclingTypes = Json.newObject();
-				int typeNumber = 0;
+				//retrive the different types of recyclables at the dropOffId
+				NodeList tags = currentDropOff.getChildNodes();
+				ArrayNode recyclingTypes = new ArrayNode(JsonNodeFactory.instance);
 				for(int ii=0; ii<tags.getLength(); ii++){
 					Node tag = tags.item(ii);	
-					System.out.println(tag.getNodeName());
 					if (tag.getNodeName()=="tag") {
 						String kAttribute = tag.getAttributes().getNamedItem("k").getNodeValue();
 						System.out.println(kAttribute);
 						if (kAttribute.contains("recycling")) {
-							recyclingTypes.put("type"+typeNumber, kAttribute.substring(10));
-							typeNumber++;
+							recyclingTypes.add(kAttribute.substring(10));
 						}
 						
 					}
 				}
-				closeDropOffs.add(recyclingTypes);
-				*/
+				dropOff.put("items", recyclingTypes);
 				closeDropOffs.add(dropOff);
 			}
 		} catch (ParserConfigurationException e) {
