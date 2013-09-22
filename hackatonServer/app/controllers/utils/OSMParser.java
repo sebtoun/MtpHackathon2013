@@ -64,7 +64,6 @@ public class OSMParser
 			//json que l'on retourne:
 
 			//Filling the Json with all the close recycling drop offs
-			System.out.println("Caca");
 			NodeList nodeList = (NodeList) xPath.compile(expression).evaluate(xmlDocument, XPathConstants.NODESET);
 			for (int i=0; i<nodeList.getLength(); i++){
 				Node currentDropOff = nodeList.item(i);
@@ -81,21 +80,19 @@ public class OSMParser
 
 				//retrive the different types of recyclables at the dropOffId
 				NodeList tags = currentDropOff.getChildNodes();
-				ObjectNode recyclingTypes = Json.newObject();
-				int typeNumber = 0;
+				ArrayNode recyclingTypes = new ArrayNode(JsonNodeFactory.instance);
 				for(int ii=0; ii<tags.getLength(); ii++){
 					Node tag = tags.item(ii);	
 					if (tag.getNodeName()=="tag") {
 						String kAttribute = tag.getAttributes().getNamedItem("k").getNodeValue();
 						System.out.println(kAttribute);
-						if (kAttribute.contains("recycling")) {
-							recyclingTypes.put("type"+typeNumber, kAttribute.substring(10));
-							typeNumber++;
+						if (kAttribute.contains("recycling") && !kAttribute.contains("type")) {
+							recyclingTypes.add(kAttribute.substring(10));
 						}
 						
 					}
 				}
-				closeDropOffs.add(recyclingTypes);
+				dropOff.put("items", recyclingTypes);
 				closeDropOffs.add(dropOff);
 			}
 		} catch (ParserConfigurationException e) {
