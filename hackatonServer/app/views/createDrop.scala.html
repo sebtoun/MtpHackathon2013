@@ -1,8 +1,10 @@
+@(latitude:Float, longitude: Float)
+
 @main("Create drop") {
 
 @helper.form(action=routes.DropDeclaration.createDrop(), 'enctype -> "multipart/form-data") { 
 	Photo : <input type="file" name="picture"><br />
-	<input type="hidden" name="latitude" value="2.5" />
-	<input type="hidden" name="longitude" value="3.0" />
+	<input type="hidden" name="latitude" value="@latitude" />
+	<input type="hidden" name="longitude" value="@longitude" />
 	<input type="submit" class="btn" value="S'authentifier" />
 } }
