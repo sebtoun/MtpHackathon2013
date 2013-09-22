@@ -16,6 +16,9 @@ public class DropOff extends Model
 	@Id
 	public Long id;
 	
+	/**
+	 * ID from OSM. If equals -1 not from OSM.
+	 */
 	public Long idOSM;
 	
 	public float latitude ;
@@ -43,6 +46,11 @@ public class DropOff extends Model
 	public static DropOff findById(Long id)
 	{
 		return find.byId(id);
+	}
+	
+	public static DropOff findByIdOSM(Long idOSM)
+	{
+		return find.where().eq("idOSM", idOSM).findUnique();
 	}
 	
 	/**
