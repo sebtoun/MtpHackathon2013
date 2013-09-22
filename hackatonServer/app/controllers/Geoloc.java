@@ -4,6 +4,7 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import models.DropOff;
 
+import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.node.ObjectNode;
 
 import controllers.utils.BoundingBox;
@@ -32,18 +33,8 @@ public class Geoloc extends Controller {
 	{
 		//Calcul de la BoundingBox
 		BoundingBox box = new BoundingBox(latitude, longitude, distance);
-		System.out.println("left : " + box.getLeft() + " bottom : " + box.getBottom() + " right : " + box.getRight() + " top : " + box.getTop());
-		
-		System.out.println(OSMParser.buildURLBoundingBox(box.getLeft(), box.getBottom(), box.getRight(), box.getTop()));
-		System.out.println(OSMParser.getDropOffsNearBBox(box.getLeft(), box.getBottom(), box.getRight(), box.getTop()));
-		
-		String xml = HttpGet.getHTML(OSMParser.buildURLBoundingBox(box.getLeft(), box.getBottom(), box.getRight(), box.getTop()));
-				
-		ObjectNode result = Json.newObject();
-		result.put("status", "KO");
-	    result.put("message", "test ok");
-	    System.out.println("[JSON] " + result);
-		return ok(result);
+		String json = OSMParser.getDropOffsNearBBox(box.getLeft(), box.getBottom(), box.getRight(), box.getTop());
+		return ok(json);
 	}
 	
 	public static DropOff getDropOff(float latitude, float longitude)
@@ -52,10 +43,24 @@ public class Geoloc extends Controller {
 		dropOff.setLatitude(latitude);
 		dropOff.setLongitude(longitude);
 		dropOff.setIdOSM(-1l);
-		//TODO
-		//récupérer sur OSM si il y a un point de dépot des déchets tout prêt
-		DropOff.create(dropOff);
-		return dropOff ;
+		BoundingBox box = new BoundingBox(latitude, longitude, 1);
+		String json = OSMParser.getDropOffsNearBBox(box.getLeft(), box.getBottom(), box.getRight(), box.getTop());
+		System.out.println(json);
+		JsonNode listeDropOffs = Json.parse(json);
+		int nbDropOff = listeDropOffs.size();
+		if(nbDropOff > 0)
+		{
+			Long idOSM = listeDropOffs.get(0).get("idOSM").asLong() ;
+			DropOff dropOffByOSM = DropOff.findByIdOSM(idOSM);
+			if(dropOffByOSM != null) dropOff = dropOffByOSM ;
+			else
+			{
+				dropOff.setIdOSM(idOSM);
+				DropOff.create(dropOff);
+			}
+		}
+		else DropOff.create(dropOff);
+		return dropOff;
 	}
 
 }

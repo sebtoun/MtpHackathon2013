@@ -9,6 +9,7 @@ GET 	/fetchToken/:callback		controllers.Application.fetchToken(callback : String
 # Geoloc
 ## returns all the dropoffs in a box (size 2xdistance) around the lat and long 
 GET	/geoloc/dropoffs/:latitude/:longitude/:distance	controllers.Geoloc.getDropoffsBox(latitude: Float, longitude: Float, distance: Long)
+#GET /geoloc/dropoff/:latitude/:longitude	controllers.Geoloc.getDropOff(latitude: Float, longitude: Float)
 
 # Content Creation
 ## Attend un paramètre picture pour la photo, sessionToken en int, latitude, longitude
