@@ -1,4 +1,5 @@
 function appMain(){
+	console.log("clicked!");
 	getDropoffs();
 	console.log("Loaded!")
 }
@@ -19,7 +20,7 @@ function getDropoffs(){
 		} else {
 			
 			//**
-			$.get("/geoloc/dropoffs/"+ pos.coords.latitude +"/" + pos.coords.longitude + "/1000",
+			$.get("/geoloc/dropoffs/"+ pos.coords.latitude +"/" + pos.coords.longitude + "/500",
 				{},
 				function(data, err) {
 					var dp;
