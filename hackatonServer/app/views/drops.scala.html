@@ -2,12 +2,12 @@
 
 @main("Drops") {
 	
-	<h1>Mes dépots</h1>
+	<h1>Mes d&eacute;pots</h1>
 	
 	<ul>
 	
 	@for((drop, i) <- drops.zipWithIndex) {
-		<li>Dépot @drop.id (<@drop.creationDate) : </li>
+		<li>D&eacute;pot @drop.id (@drop.creationDate) : </li>
 	}
 	
 	</ul>

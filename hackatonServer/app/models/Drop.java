@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import com.avaje.ebean.Ebean;
 
@@ -19,6 +20,7 @@ public class Drop extends Model
 	
 	public DropOff dropOff;
 	
+	@ManyToOne
 	public UserAccount user;
 	
 	public Photo photo ;
