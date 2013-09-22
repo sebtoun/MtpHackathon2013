@@ -64,7 +64,6 @@ public class OSMParser
 			//json que l'on retourne:
 
 			//Filling the Json with all the close recycling drop offs
-			System.out.println("Caca");
 			NodeList nodeList = (NodeList) xPath.compile(expression).evaluate(xmlDocument, XPathConstants.NODESET);
 			for (int i=0; i<nodeList.getLength(); i++){
 				Node currentDropOff = nodeList.item(i);
