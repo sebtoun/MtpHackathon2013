@@ -191,7 +191,7 @@ public class Application extends Controller {
      */
     public static Result checkAccessToken()
     {
-    	if(session("access_token") != null)
+    	/*if(session("access_token") != null)
     	{
     		if(Long.parseLong(session("access_token_expires")) <= System.currentTimeMillis())
     		{
@@ -207,7 +207,7 @@ public class Application extends Controller {
     	else
     	{
     		redirect(routes.Application.loginInWithFacebook());
-    	}
+    	}*/
     	
     	return ok();
     }
