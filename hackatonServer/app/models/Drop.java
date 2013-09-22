@@ -5,6 +5,8 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import com.avaje.ebean.Ebean;
+
 import play.db.ebean.Model;
 import play.db.ebean.Model.Finder;
 
@@ -20,7 +22,7 @@ public class Drop extends Model
 	
 	public Photo photo ;
 	
-//	public Content content;
+	public Content content;
 	
 	/**
 	 * Date de drop
@@ -47,5 +49,67 @@ public class Drop extends Model
 	public static Drop findById(Long id)
 	{
 		return find.byId(id);
+	}
+
+	public DropOff getDropOff() {
+		return dropOff;
+	}
+
+	public void setDropOff(DropOff dropOff) {
+		this.dropOff = dropOff;
+	}
+
+	public UserAccount getUser() {
+		return user;
+	}
+
+	public void setUser(UserAccount user) {
+		this.user = user;
+	}
+
+	public Photo getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(Photo photo) {
+		this.photo = photo;
+	}
+
+	public Date getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	public Long getId() {
+		return id;
+	}
+	
+	public Content getContent() {
+		return content;
+	}
+
+	public void setContent(Content content) {
+		this.content = content;
+	}
+
+	/**
+	 * Enregistre en base de données le dropOff passé en paramètre
+	 * @param userAccount
+	 */
+	public static void create(Drop drop)
+	{
+		Ebean.save(drop);
+	}
+
+	/**
+	 * Met à jour dans la BDD le dropOff passé en paramètre
+	 * @param userAccount
+	 */
+	public static void update(Drop drop)
+	{
+		Ebean.save(drop);
 	}
 }
