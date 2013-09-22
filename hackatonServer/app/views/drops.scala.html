@@ -7,7 +7,7 @@
 	<ul>
 	
 	@for((drop, i) <- drops.zipWithIndex) {
-		<li>D&eacute;pot @drop.id (@drop.creationDate) : </li>
+		<li>D&eacute;pot @drop.id (@drop.creationDate) : @drop.likes likes / @drop.dislikes dislikes</li>
 	}
 	
 	</ul>

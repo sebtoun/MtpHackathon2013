@@ -2,9 +2,11 @@
 
 @main("Create drop") {
 
+<h1>Déposer un déchet</h1>
+
 @helper.form(action=routes.DropDeclaration.createDrop(), 'enctype -> "multipart/form-data") { 
 	Photo : <input type="file" name="picture"><br />
 	<input type="hidden" name="latitude" value="@latitude" />
 	<input type="hidden" name="longitude" value="@longitude" />
-	<input type="submit" class="btn" value="S'authentifier" />
+	<input type="submit" class="btn" value="Uploader l'image" />
 } }

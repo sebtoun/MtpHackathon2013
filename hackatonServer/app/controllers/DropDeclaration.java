@@ -89,6 +89,8 @@ public class DropDeclaration extends Controller
 				    drop.setDropOff(dropOff);
 				    drop.setContent(content);
 				    drop.setCreationDate(new Date());
+				    drop.likes = 0l;
+				    drop.dislikes = 0l;
 				    Drop.create(drop);
 				    System.out.println("drop id : " + drop.getId());
 				    
@@ -125,7 +127,7 @@ public class DropDeclaration extends Controller
 									photo.setUrl(new URL("http://graph.facebook.com/" + result.get("id")));
 								} catch (MalformedURLException e) {
 									e.printStackTrace();
-									return redirect(routes.Application.index());
+									return badRequest();
 								}
 								Photo.create(photo);
 			            		
@@ -139,7 +141,7 @@ public class DropDeclaration extends Controller
 			            }
 			    	});
 					
-					return ok();
+					return redirect(routes.Feeds.listUserFeed(session("username")));
 				} 
 				else 
 				{
