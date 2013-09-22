@@ -11,6 +11,15 @@
         <script src="@routes.Assets.at("javascripts/geolocal.web.js")" type="text/javascript"></script>
     </head>
     <body>
+    	
+    	<a href="/clearSession">Vider la session Play</a>
+    	
+    	@if(session.get("access_token") != null && session.get("username") != null) {
+    		<p>Connecté en tant que @session.get("name")</p>
+    	} else {
+    		<p><a href="/signInWithFacebook">Veuillez vous connecter avec Facebook</a></p>
+    	}
+    
         @content
     </body>
 </html>

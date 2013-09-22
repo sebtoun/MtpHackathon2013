@@ -33,6 +33,9 @@ public class UserAccount extends Model
 	 * Date de création de l'utilisateur
 	 */
 	public Date creationDate;
+	
+	
+	public FacebookAccount facebookAccount;
 
 
 	public static Finder<Long, UserAccount> find = new Finder<Long, UserAccount>(Long.class, UserAccount.class);
