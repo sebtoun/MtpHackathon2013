@@ -14,7 +14,7 @@ public class Feeds extends Controller
 	{
 		UserAccount user = UserAccount.findByNickname(nickname);
 		List<Drop> drops = Drop.findByUser(user);
-		return ok(views.html.feed.render(drops));
+		return ok(views.html.drops.render(drops));
 	}
 	
 }
