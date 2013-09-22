@@ -37,21 +37,24 @@ public class DropDeclaration extends Controller
 			if (picture != null) 
 			{
 				System.out.println("picture !!!");
-				//try {
+				try {
 			    String fileName = picture.getFilename();
 			    String contentType = picture.getContentType(); 
 			    File file = picture.getFile();
 			    System.out.println("filename :" + fileName );
 			    //TODO
 			    //PlaceHolder : ici il faut mettre le post Twitter de la photo
-			    /*String urlPhotoTwitter = "http://upload.wikimedia.org/wikipedia/commons/4/4a/Flickr_-_The_U.S._Army_-_Trash_collection_in_Iraqi_city.jpg" ;
+			    String urlPhotoTwitter = "http://upload.wikimedia.org/wikipedia/commons/4/4a/Flickr_-_The_U.S._Army_-_Trash_collection_in_Iraqi_city.jpg" ;
 			    Photo photo = new Photo();
 				photo.setUrl(new URL(urlPhotoTwitter));
 				Photo.create(photo);
+				System.out.println("url photo : " + photo.url);
 				
 			    DynamicForm requestData = Form.form().bindFromRequest();
 			    Float latitude = Float.parseFloat(requestData.get("latitude"));
 			    Float longitude = Float.parseFloat(requestData.get("longitude"));
+			    System.out.println("latitude : " + latitude + " longitude : " + longitude);
+			    
 			    //sessionToken en int, latitude, longitude
 			    //TODO
 			    //PlaceHolder : ici il faut récupérer l'utilisateur à partir du token
@@ -73,14 +76,14 @@ public class DropDeclaration extends Controller
 			    drop.setContent(content);
 			    drop.setCreationDate(new Date());
 			    Drop.create(drop);
-			    return ok();*/
-			/*	} catch (MalformedURLException e) {
+			    System.out.println("drop id : " + drop.getId());
+			    return ok();
+				} catch (MalformedURLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 					flash("error", "Pb posting on Twitter");
 				    return redirect(routes.Application.index());
-				}*/
-				return ok();
+				}
 			} 
 			else 
 			{

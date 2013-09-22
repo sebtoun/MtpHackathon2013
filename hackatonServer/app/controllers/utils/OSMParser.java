@@ -48,7 +48,9 @@ public class OSMParser
 		    builder = builderFactory.newDocumentBuilder();
 
 		    //get the xml via the bbox
-		    String xml = HttpGet.getHTML(buildURLBoundingBox(left, bottom, right, top));
+		    String url = buildURLBoundingBox(left, bottom, right, top) ;
+		    System.out.println("URL : " + url);
+		    String xml = HttpGet.getHTML(url);
 
 			//Parsing xml with java dom parser
 		    xmlDocument = builder.parse(new ByteArrayInputStream(xml.getBytes()));
