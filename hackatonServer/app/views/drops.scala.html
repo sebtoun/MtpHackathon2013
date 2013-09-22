@@ -4,12 +4,25 @@
 	
 	<h1>Mes d&eacute;pots</h1>
 	
-	<ul>
+	<p class="well">Voici la liste de vos d&eacute;pots de d&eacute;chets.</p>
+	
+	<table class="table table-striped">
+		<tr>
+			<td><b>Nom</b></td>
+			<td><b>Date</b></td>
+			<td><b>Nombre de likes</b></td>
+			<td><b>Nombre de dislikes</b></td>
+		</tr>
 	
 	@for((drop, i) <- drops.zipWithIndex) {
-		<li>D&eacute;pot @drop.id (@drop.creationDate) : @drop.likes likes / @drop.dislikes dislikes</li>
+		<tr>
+			<td>D&eacute;pot @drop.id</td>
+			<td>@drop.creationDate</td>
+			<td>@drop.likes likes</td>
+			<td>@drop.dislikes dislikes</td>
+		</tr>
 	}
 	
-	</ul>
+	</table>
 	
 }

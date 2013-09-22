@@ -2,11 +2,24 @@
 
 @main("Create drop") {
 
-<h1>Déposer un déchet</h1>
+<h1>D&eacute;poser un d&eacute;chet</h1>
 
-@helper.form(action=routes.DropDeclaration.createDrop(), 'enctype -> "multipart/form-data") { 
-	Photo : <input type="file" name="picture"><br />
+<p class="well">Vous avez la possibilit&eacute; de charger une image lorsque vous d&eacute;posez vos d&eacute;chets. Celle-ci sera ensuite charg&eacute;e sur Facebook dans votre profil.</p>
+
+@helper.form(action=routes.DropDeclaration.createDrop(), 'enctype -> "multipart/form-data", 'class -> "form-horizontal") { 
+	<div class="control-group">
+		<label class="control-label" for="inputEmail"><b>Photo :</b></label> 
+		<div class="controls">
+			<input type="file" name="picture">
+		</div>
+	</div>
+	
 	<input type="hidden" name="latitude" value="@latitude" />
 	<input type="hidden" name="longitude" value="@longitude" />
-	<input type="submit" class="btn" value="Uploader l'image" />
+	
+	<div class="control-group">
+		<div class="controls">
+			<input type="submit" class="btn" value="Uploader l'image" />
+		</div>
+	</div>
 } }
