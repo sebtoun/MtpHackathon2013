@@ -33,6 +33,7 @@ public class Geoloc extends Controller {
 		System.out.println("left : " + box.getLeft() + " bottom : " + box.getBottom() + " right : " + box.getRight() + " top : " + box.getTop());
 		
 		System.out.println(OSMParser.buildURLBoundingBox(box.getLeft(), box.getBottom(), box.getRight(), box.getTop()));
+		System.out.println(OSMParser.getDropOffsNearBBox(box.getLeft(), box.getBottom(), box.getRight(), box.getTop()));
 		
 		String xml = HttpGet.getHTML(OSMParser.buildURLBoundingBox(box.getLeft(), box.getBottom(), box.getRight(), box.getTop()));
 				
