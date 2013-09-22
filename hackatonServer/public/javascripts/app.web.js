@@ -47,7 +47,7 @@ function getDropoffs(){
 							"Latitude: " + dp.latitude + "°<br />"+
 							"Longitude: " + dp.longitude + "°<br />");
 
-
+						document.write("<a href=/createDrop/"+dp.latitude+"/"+dp.longitude+" >Déposer vos déchets ici</a><br />");
 						document.write("<a href=http://www.openstreetmap.org/#map=19/"+ dp.latitude +"/" + dp.longitude + ">Cliquer pour aller à la carte</a>")
 					} else {
 						document.write("<p>Aucun point de collecte trouvé</p>");
