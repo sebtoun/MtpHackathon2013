@@ -81,21 +81,19 @@ public class OSMParser
 
 				//retrive the different types of recyclables at the dropOffId
 				NodeList tags = currentDropOff.getChildNodes();
-				ObjectNode recyclingTypes = Json.newObject();
-				int typeNumber = 0;
+				ArrayNode recyclingTypes = new ArrayNode(JsonNodeFactory.instance);
 				for(int ii=0; ii<tags.getLength(); ii++){
 					Node tag = tags.item(ii);	
 					if (tag.getNodeName()=="tag") {
 						String kAttribute = tag.getAttributes().getNamedItem("k").getNodeValue();
 						System.out.println(kAttribute);
 						if (kAttribute.contains("recycling")) {
-							recyclingTypes.put("type"+typeNumber, kAttribute.substring(10));
-							typeNumber++;
+							recyclingTypes.add(kAttribute.substring(10));
 						}
 						
 					}
 				}
-				closeDropOffs.add(recyclingTypes);
+				dropOff.put("items", recyclingTypes);
 				closeDropOffs.add(dropOff);
 			}
 		} catch (ParserConfigurationException e) {
