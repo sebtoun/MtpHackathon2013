@@ -5,8 +5,20 @@
 	<p class="well">
 		Bienvenue sur l'application Montpellier Hackathon 2013.<br />
 		Vous avez la possibilit&eacute; de connaitre les diff&eacute;rents points de recyclage se trouvant pr&egrave;s de votre position en cliquant sur le bouton ci-dessous.<br />
-		<a href="#" onClick="appMain();" class="btn btn-primary">Point de recyclage a proximite</a>
+		<a href="#" id="lol2" class="btn btn-primary">Point de recyclage a proximite</a>
+		<div id="lol"></div>
 	</p>
 	
+	<div id="decheterie" class="well"></div>
+	
+	<script type="text/javascript">
+		
+		$("#lol2").click(function() {
+			appMain();
+			
+			$("#lol").html("<div class=\"progress progress-striped active\"> <div class=\"bar\" style=\"width: 100%;\"></div> </div>")
+		});
+	
+	</script>
     
 }

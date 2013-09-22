@@ -7,9 +7,11 @@ function appMain(){
 function drop(){
 	getLocation(function(pos,err)
 	{
-		document.write(
-		"<p>Latitude: " + pos.coords.latitude +
+		$("#decheterie").append("<p>Latitude: " + pos.coords.latitude +
 		"<br />Longitude: " + pos.coords.longitude + "</p>");
+		/*document.write(
+		"<p>Latitude: " + pos.coords.latitude +
+		"<br />Longitude: " + pos.coords.longitude + "</p>");*/
 	});
 }
 
@@ -43,13 +45,19 @@ function getDropoffs(){
 						};
 					}
 					if (dp) {
-						document.write("<p>Point de collecte à proximité:<br />" +
+						$("#decheterie").append("<p>Point de collecte à proximité:<br />" +
+								"Distance: " + Math.floor(mindist*1000) + " mètres...<br />"+
+								"Latitude: " + dp.latitude + "°<br />"+
+								"Longitude: " + dp.longitude + "°<br />");
+						/*document.write("<p>Point de collecte à proximité:<br />" +
 							"Distance: " + Math.floor(mindist*1000) + " mètres...<br />"+
 							"Latitude: " + dp.latitude + "°<br />"+
-							"Longitude: " + dp.longitude + "°<br />");
-
-						document.write("<a href=/createDrop/"+dp.latitude+"/"+dp.longitude+" >Déposer vos déchets ici</a><br />");
-						document.write("<a href=http://www.openstreetmap.org/#map=19/"+ dp.latitude +"/" + dp.longitude + ">Cliquer pour aller à la carte</a>")
+							"Longitude: " + dp.longitude + "°<br />");*/
+						
+						$("#decheterie").append("<a class=\"btn\" href=/createDrop/"+dp.latitude+"/"+dp.longitude+" >Déposer vos déchets ici</a><br /><br />");
+						$("#decheterie").append("<a class=\"btn\" href=http://www.openstreetmap.org/#map=19/"+ dp.latitude +"/" + dp.longitude + ">Cliquer pour aller à la carte</a>");
+						//document.write("<a href=/createDrop/"+dp.latitude+"/"+dp.longitude+" >Déposer vos déchets ici</a><br />");
+						//document.write("<a href=http://www.openstreetmap.org/#map=19/"+ dp.latitude +"/" + dp.longitude + ">Cliquer pour aller à la carte</a>")
 					} else {
 						document.write("<p>Aucun point de collecte trouvé</p>");
 					}
