@@ -1,4 +1,5 @@
 function appMain(){
+	getDropoffs();
 	console.log("Loaded!")
 }
 
@@ -17,10 +18,10 @@ function getDropoffs(){
 			console.log("oops, pos not good")
 		} else {
 			console.log("Getting: " + "/geoloc/dropoffs/"+ pos.coords.latitude +"/" + pos.coords.longitude + "/10")
-			$.get("/geoloc/dropoffs/"+ pos.coords.latitude +"/" + pos.coords.longitude + "/1000",
+			$.get("/geoloc/dropoffs/"+ pos.coords.latitude +"/" + pos.coords.longitude + "/20",
 				{},
 				function(data, err) {
-					if (err) {
+					if (false){//err) {
 						console.log("oops, data not good")
 					} else {
 						console.log("Good?")
