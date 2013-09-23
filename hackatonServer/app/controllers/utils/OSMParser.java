@@ -86,7 +86,7 @@ public class OSMParser
 					if (tag.getNodeName()=="tag") {
 						String kAttribute = tag.getAttributes().getNamedItem("k").getNodeValue();
 						System.out.println(kAttribute);
-						if (kAttribute.contains("recycling")) {
+						if (kAttribute.contains("recycling") && !kAttribute.contains("type")) {
 							recyclingTypes.add(kAttribute.substring(10));
 						}
 						
