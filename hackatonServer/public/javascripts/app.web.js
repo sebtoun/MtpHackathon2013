@@ -43,7 +43,7 @@ function getDropoffs(){
 					}
 					if (dp) {
 						document.write("<p>Point de collecte à proximité:<br />" +
-							"Distance: " + Math.floor(mindist*100) + " mètres...<br />"+
+							"Distance: " + Math.floor(mindist*1000) + " mètres...<br />"+
 							"Latitude: " + dp.latitude + "°<br />"+
 							"Longitude: " + dp.longitude + "°<br />");
 
